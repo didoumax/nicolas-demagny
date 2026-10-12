@@ -1,0 +1,17 @@
+---
+import { commentSeance } from "../data/content";
+---
+
+<div class="reveal grid gap-6 md:grid-cols-3">
+  {commentSeance.map((step) => (
+    <div class="relative flex min-h-[340px] flex-col justify-between overflow-hidden rounded-[24px] border border-line-light bg-white p-7">
+      <span class="relative font-display text-6xl font-extrabold text-ink-muted">
+        {step.n}
+      </span>
+      <div class="relative">
+        <h3 class="font-display text-xl font-bold text-ink">{step.title}</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-muted">{step.text}</p>
+      </div>
+    </div>
+  ))}
+</div>

@@ -1,0 +1,77 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import RoundButton from "../../components/RoundButton.astro";
+import PullQuote from "../../components/PullQuote.astro";
+import FaqSchema from "../../components/FaqSchema.astro";
+import { hypnosePage, faqHypnose } from "../../data/content";
+---
+
+<Layout
+  title="L'hypnose ericksonienne expliquée — N. Demagny"
+  description="Qu'est-ce que l'hypnose ericksonienne ? Un état modifié de conscience, développé par Milton Erickson, expliqué par Nicolas Demagny à Bordeaux."
+>
+  <FaqSchema faq={faqHypnose} slot="head" />
+  <section class="relative overflow-hidden bg-dark px-5 py-16 text-white md:px-10 md:py-24">
+    <div class="reveal relative mx-auto max-w-[1280px] text-center md:text-left">
+      <p class="eyebrow">L'hypnose & l'hypnothérapie</p>
+      <h1 class="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
+        L'hypnose ericksonienne
+      </h1>
+      <p class="mx-auto mt-6 max-w-xl text-on-dark-muted md:mx-0">
+        Comprendre ce qu'est réellement l'hypnose ericksonienne — et ce qu'elle n'est pas — avant de prendre rendez-vous.
+      </p>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden bg-paper px-5 py-20 md:px-10 md:py-28">
+    <div class="reveal relative mx-auto max-w-[1280px] text-center md:text-left">
+      <p class="mx-auto max-w-2xl text-ink-muted md:mx-0">
+        Deux notions à distinguer : l'hypnose est l'état modifié de conscience ; l'hypnothérapie en est l'usage à des fins thérapeutiques.
+      </p>
+    </div>
+    <div class="reveal relative mx-auto mt-8 grid max-w-[1280px] gap-12 md:grid-cols-2">
+      <div class="rounded-[24px] bg-white p-8 md:p-10">
+        <p class="eyebrow text-center md:text-left">L'hypnose</p>
+        <p class="mt-6 text-lg leading-relaxed text-ink-muted">{hypnosePage.hypnose}</p>
+      </div>
+      <div class="rounded-[24px] bg-white p-8 md:p-10">
+        <p class="eyebrow text-center md:text-left">L'hypnothérapie</p>
+        <p class="mt-6 text-lg leading-relaxed text-ink-muted">{hypnosePage.hypnotherapie}</p>
+      </div>
+    </div>
+  </section>
+
+  <PullQuote />
+
+  <!-- FAQ — brouillon SEO à valider avec Nicolas avant publication -->
+  <section class="relative overflow-hidden bg-paper px-5 py-20 md:px-10 md:py-28">
+    <div class="reveal relative mx-auto max-w-[1280px] text-center md:text-left">
+      <p class="eyebrow">Questions fréquentes</p>
+      <h2 class="mt-4 font-display text-3xl font-bold text-ink md:text-4xl">FAQ — L'hypnose ericksonienne</h2>
+      <div class="mt-10 divide-y divide-line-light border-y border-line-light">
+        {faqHypnose.map((item) => (
+          <details class="group py-6">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-lg font-semibold text-ink">
+              {item.question}
+              <span class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-line-light text-ink transition-transform duration-300 group-open:rotate-45" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M6 1V11M1 6H11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-4 max-w-2xl text-ink-muted">{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden bg-white px-5 py-20 text-center md:px-10 md:py-28">
+    <div class="reveal relative mx-auto max-w-xl">
+      <h2 class="font-display text-3xl font-bold text-ink md:text-4xl">Découvrir les domaines d'intervention</h2>
+      <div class="mt-10">
+        <RoundButton href="/domaines-dintervention/">Voir les domaines d'intervention</RoundButton>
+      </div>
+    </div>
+  </section>
+</Layout>

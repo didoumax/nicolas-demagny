@@ -1,0 +1,19 @@
+---
+interface Props {
+  src: string;
+  theme?: "dark" | "light";
+  position?: string;
+  opacity?: string; // override si besoin (ex. hero plein écran)
+}
+const { src, theme = "dark", position = "center center", opacity: opacityProp } = Astro.props;
+
+const filter = "grayscale(1) " + (theme === "dark" ? "brightness(1.2)" : "brightness(0.7)");
+const opacity = opacityProp ?? (theme === "dark" ? "0.07" : "0.08");
+---
+
+<div
+  aria-hidden="true"
+  class="pointer-events-none absolute inset-0"
+  style={`background-image: url('${src}'); background-size: cover; background-position: ${position}; filter: ${filter}; opacity: ${opacity};`}
+>
+</div>

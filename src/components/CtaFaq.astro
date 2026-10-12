@@ -1,0 +1,60 @@
+---
+import PhotoPlaceholder from "./PhotoPlaceholder.astro";
+import { site, faqAccueil } from "../data/content";
+---
+
+<section class="relative overflow-hidden bg-white px-5 py-24 md:px-10 md:py-32">
+  <div class="reveal mx-auto max-w-[1280px]">
+    <div class="grid overflow-hidden rounded-[28px] bg-paper md:grid-cols-2">
+      <div class="flex flex-col items-center justify-center p-8 text-center md:items-start md:p-14 md:text-left">
+        <p class="eyebrow text-coral">Prendre rendez-vous</p>
+        <h2 class="mt-4 font-display text-3xl font-bold text-ink md:text-4xl">Envie d'avancer dès maintenant ?</h2>
+        <p class="mt-4 max-w-sm text-ink-muted">
+          Premier échange rapide pour clarifier votre objectif. Consultations sur rendez-vous uniquement.
+        </p>
+        <a href="/contact/" class="btn-pill mt-8 w-fit">
+          Prendre rendez-vous
+          <span class="btn-pill-icon" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M3 11L11 3M11 3H4.5M11 3V9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+        <p class="mt-5 text-xs text-ink-muted">
+          {site.hours} · <a href={site.phoneHref} class="underline-link">{site.phone}</a>
+        </p>
+      </div>
+      <PhotoPlaceholder
+        label="[PORTRAIT — CTA]"
+        src="/images/nicolas-demagny-portrait.png"
+        alt={site.name}
+        objectPosition="center 20%"
+        class="min-h-[220px] w-full md:min-h-0"
+      />
+    </div>
+
+    <div class="mt-20 grid gap-12 md:grid-cols-[0.9fr_1.1fr]">
+      <div class="text-center md:text-left">
+        <p class="eyebrow text-coral">FAQ</p>
+        <h2 class="mt-4 font-display text-3xl font-bold text-ink md:text-4xl">
+          Questions fréquentes
+        </h2>
+      </div>
+      <div class="divide-y divide-line-light border-y border-line-light">
+        {faqAccueil.map((item) => (
+          <details class="group py-6">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-lg font-semibold text-ink">
+              {item.question}
+              <span class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-line-light text-ink transition-transform duration-300 group-open:rotate-45" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M6 1V11M1 6H11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-4 max-w-2xl text-ink-muted">{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

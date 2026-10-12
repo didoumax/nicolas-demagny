@@ -1,0 +1,42 @@
+---
+// Emplacement photo — affiche l'image fournie si `src` est passé, sinon un placeholder.
+interface Props {
+  label: string;
+  class?: string;
+  rounded?: boolean;
+  theme?: "light" | "dark";
+  src?: string;
+  alt?: string;
+  objectPosition?: string;
+}
+const {
+  label,
+  class: className = "",
+  rounded = false,
+  theme = "light",
+  src,
+  alt = "",
+  objectPosition = "center top",
+} = Astro.props;
+---
+
+{src ? (
+  <img
+    src={src}
+    alt={alt}
+    class:list={["object-cover", rounded ? "rounded-[24px]" : "", className]}
+    style={`object-position: ${objectPosition};`}
+    loading="lazy"
+  />
+) : (
+  <div
+    class:list={[
+      "flex items-center justify-center text-center",
+      theme === "dark" ? "bg-dark-2 text-on-dark-muted" : "bg-paper text-ink-muted",
+      rounded ? "rounded-[24px]" : "",
+      className,
+    ]}
+  >
+    <p class="eyebrow eyebrow--plain max-w-[14rem] text-current opacity-70">{label}</p>
+  </div>
+)}

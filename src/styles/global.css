@@ -1,0 +1,254 @@
+@import "tailwindcss";
+
+/* Fonts */
+@import "@fontsource/funnel-display/500.css";
+@import "@fontsource/funnel-display/600.css";
+@import "@fontsource/funnel-display/700.css";
+@import "@fontsource/funnel-display/800.css";
+@import "@fontsource/funnel-sans/400.css";
+@import "@fontsource/funnel-sans/500.css";
+@import "@fontsource/funnel-sans/600.css";
+
+@theme {
+  /* Design tokens — Coral / Dark Green / White */
+  --color-coral: #f2785c;
+  --color-coral-dark: #de5f42;
+  --color-coral-soft: #f8cec0;
+  --color-dark: #1c2220;
+  --color-dark-2: #262f2c;
+  --color-dark-3: #333e3a;
+  --color-white: #ffffff;
+  --color-paper: #eef1ee;
+  --color-paper-2: #f6f7f5;
+  --color-ink: #1c2220;
+  --color-ink-muted: #666f6c;
+  --color-on-dark: #ffffff;
+  --color-on-dark-muted: #a9b0ad;
+  --color-line-light: #dde2de;
+  --color-line-dark: #3a4440;
+
+  --font-display: "Funnel Display", "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Funnel Sans", "Helvetica Neue", Arial, sans-serif;
+
+  --container-page: 1280px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    background-color: var(--color-white);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-coral);
+  }
+  .eyebrow::before {
+    content: "";
+    display: block;
+    width: 18px;
+    height: 6px;
+    flex-shrink: 0;
+    border-radius: 9999px;
+    background-color: var(--color-coral);
+  }
+  .eyebrow--plain::before {
+    display: none;
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  /* Pill CTA — coral, fills, arrow chip on the end */
+  .btn-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 9999px;
+    background-color: var(--color-coral);
+    color: var(--color-white);
+    padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    border: 1px solid var(--color-coral);
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+  }
+  .btn-pill:hover {
+    background-color: var(--color-coral-dark);
+    border-color: var(--color-coral-dark);
+  }
+  .btn-pill .btn-pill-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-shrink: 0;
+    border-radius: 9999px;
+    background-color: var(--color-white);
+    color: var(--color-coral);
+  }
+
+  /* Pill outline — dark border, dark text, dark chip */
+  .btn-pill-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 9999px;
+    background-color: transparent;
+    color: var(--color-ink);
+    padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    border: 1px solid var(--color-ink);
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+  .btn-pill-outline:hover {
+    background-color: var(--color-ink);
+    color: var(--color-white);
+  }
+  .btn-pill-outline .btn-pill-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-shrink: 0;
+    border-radius: 9999px;
+    background-color: var(--color-ink);
+    color: var(--color-white);
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+  .btn-pill-outline:hover .btn-pill-icon {
+    background-color: var(--color-white);
+    color: var(--color-ink);
+  }
+
+  /* On-dark variants */
+  .btn-pill-outline--on-dark {
+    color: var(--color-white);
+    border-color: var(--color-white);
+  }
+  .btn-pill-outline--on-dark .btn-pill-icon {
+    background-color: var(--color-white);
+    color: var(--color-ink);
+  }
+  .btn-pill-outline--on-dark:hover {
+    background-color: var(--color-white);
+    color: var(--color-ink);
+  }
+  .btn-pill-outline--on-dark:hover .btn-pill-icon {
+    background-color: var(--color-ink);
+    color: var(--color-white);
+  }
+
+  .btn-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 9999px;
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    border: 1px solid var(--color-dark);
+    transition: background-color 0.25s ease, color 0.25s ease;
+    flex-shrink: 0;
+  }
+  .btn-circle:hover {
+    background-color: var(--color-coral);
+    border-color: var(--color-coral);
+  }
+  .btn-circle--outline {
+    background-color: transparent;
+    color: var(--color-ink);
+    border-color: var(--color-line-light);
+  }
+  .btn-circle--outline:hover {
+    background-color: var(--color-ink);
+    color: var(--color-white);
+    border-color: var(--color-ink);
+  }
+
+  .underline-link {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    font-weight: 600;
+  }
+
+  .card-dark {
+    border-radius: 20px;
+    background: linear-gradient(160deg, var(--color-dark-3) 0%, var(--color-dark-2) 100%);
+    border: 1px solid var(--color-line-dark);
+  }
+
+  .scrollbar-hidden {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  .icon-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 9999px;
+    background-color: var(--color-coral);
+    color: var(--color-white);
+  }
+}

@@ -1,0 +1,70 @@
+---
+import { site, domaines } from "../data/content";
+
+const year = new Date().getFullYear();
+
+const praticien = [
+  { href: "/lhypnose-et-lhypnotherapie/", label: "L'hypnose" },
+  { href: "/qui-suis-je/", label: "Qui suis-je" },
+  { href: "/tarifs/", label: "Tarifs" },
+];
+
+const infos = [
+  { href: "/contact/", label: "Contact" },
+  { href: "/domaines-dintervention/", label: "Domaines d'intervention" },
+  { href: "/mentions-legales/", label: "Mentions légales" },
+];
+---
+
+<footer class="relative overflow-hidden bg-dark text-white">
+  <div class="mx-auto max-w-[1280px] px-5 pb-10 pt-16 md:px-10 md:pt-20">
+    <div class="grid gap-12 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
+      <div>
+        <a href="/" class="flex items-center gap-1 leading-none text-white">
+          <span class="font-display text-2xl font-bold tracking-tight">{site.name}</span>
+          <span class="mb-2 text-3xl leading-none text-coral" aria-hidden="true">.</span>
+        </a>
+        <p class="mt-4 max-w-xs text-on-dark-muted">
+          Hypnothérapeute à {site.city} — Hypnose ericksonienne et thérapies brèves depuis 2013.
+        </p>
+        <div class="mt-6 space-y-1 text-sm text-on-dark-muted">
+          <p><a href={site.phoneHref} class="hover:text-white">{site.phone}</a></p>
+          <p>{site.address.street}, {site.address.postalCode} {site.address.city}</p>
+          <p>{site.hours}</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-display text-lg font-bold text-white">Praticien</h3>
+        <ul class="mt-5 space-y-3">
+          {praticien.map((link) => (
+            <li><a href={link.href} class="text-on-dark-muted hover:text-white">{link.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-display text-lg font-bold text-white">Domaines</h3>
+        <ul class="mt-5 space-y-3">
+          {domaines.map((d) => (
+            <li><a href={`/domaines-dintervention/${d.slug}/`} class="text-on-dark-muted hover:text-white">{d.title}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-display text-lg font-bold text-white">Informations</h3>
+        <ul class="mt-5 space-y-3">
+          {infos.map((link) => (
+            <li><a href={link.href} class="text-on-dark-muted hover:text-white">{link.label}</a></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-16 flex flex-col gap-4 border-t border-line-dark pt-8 text-sm text-on-dark-muted md:flex-row md:items-center md:justify-between">
+      <p>© {year} All Rights Reserved — {site.name}</p>
+      <a href="/mentions-legales/" class="underline-link text-on-dark-muted hover:text-white">Mentions légales</a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,59 @@
+---
+import { allReviews } from "../data/reviews";
+
+const slides = allReviews.slice(0, 12);
+---
+
+<section class="relative overflow-hidden bg-white py-24 md:py-32" aria-labelledby="avis-title">
+  <div class="reveal relative mx-auto max-w-[1280px] px-5 text-center md:px-10 md:text-left">
+    <p class="eyebrow text-coral">Avis Google vérifiés</p>
+    <h2 id="avis-title" class="mt-4 font-display text-3xl font-bold text-ink md:text-4xl">
+      Ce que disent les personnes que j'accompagne
+    </h2>
+  </div>
+
+  <div class="marquee-viewport reveal relative mt-12 overflow-hidden">
+    <div class="marquee-track flex w-max gap-5">
+      {[...slides, ...slides].map((review) => (
+        <article class="card-dark w-[280px] flex-shrink-0 p-7 md:w-[320px]">
+          <span class="font-display text-5xl leading-none text-white/25" aria-hidden="true">"</span>
+          <p class="mt-4 min-h-[96px] text-sm leading-relaxed text-on-dark">{review.text}</p>
+          <div class="mt-6 flex items-center gap-3 border-t border-line-dark pt-5">
+            <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-coral font-display text-sm font-bold text-white" aria-hidden="true">
+              {review.name.charAt(0).toUpperCase()}
+            </span>
+            <div>
+              <p class="text-sm font-semibold text-white">{review.name}</p>
+              <p class="text-xs text-on-dark-muted">{review.date} · Avis Google</p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-track {
+    animation: marquee 60s linear infinite;
+  }
+  .marquee-viewport:hover .marquee-track {
+    animation-play-state: paused;
+  }
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+    .marquee-viewport {
+      overflow-x: auto;
+    }
+  }
+</style>

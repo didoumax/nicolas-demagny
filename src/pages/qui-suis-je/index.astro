@@ -1,0 +1,66 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PhotoPlaceholder from "../../components/PhotoPlaceholder.astro";
+import RoundButton from "../../components/RoundButton.astro";
+import { bio, ethique, site } from "../../data/content";
+---
+
+<Layout
+  title="Qui suis-je ? Nicolas Demagny, praticien en hypnose"
+  description="Maître praticien en hypnose certifié NGH, diplômé en PNL et EMDR, Nicolas Demagny accompagne à Bordeaux depuis 2013 par l'hypnose ericksonienne."
+>
+  <section class="relative overflow-hidden bg-paper px-5 py-16 md:px-10 md:py-24">
+    <div class="reveal relative mx-auto max-w-[1280px]">
+      <div class="grid gap-12 md:grid-cols-[45%_55%] md:items-center md:gap-16">
+        <PhotoPlaceholder
+          label="[PORTRAIT ASSIS — à fournir par le client]"
+          src="/images/nicolas-demagny-portrait.png"
+          alt={site.name}
+          rounded
+          class="aspect-[4/5] w-full shadow-[0_30px_60px_rgba(28,34,32,0.15)]"
+        />
+        <div class="text-center md:text-left">
+          <p class="eyebrow">Qui suis-je ?</p>
+          <h1 class="mt-4 font-display text-3xl font-bold text-ink md:text-5xl">Nicolas Demagny</h1>
+          <div class="mt-8 space-y-5 text-left text-ink-muted">
+            <p>{bio.paragraphs[0]}</p>
+            <p>{bio.paragraphs[1]}</p>
+            <p>
+              Pour la neutralisation émotionnelle de certains{" "}
+              <a href="/domaines-dintervention/traumatismes/" class="text-ink underline underline-offset-2 hover:text-coral">traumatismes</a>,
+              mon approche par l'hypnose est complétée par des mouvements oculaires de désensibilisation de type EMDR.
+            </p>
+            <p>
+              Je remercie bien évidemment le Docteur Christian GUAY, psychiatre, qui m'a fait découvrir l'hypnose ericksonienne
+              au milieu des années 90 et avec lequel nous avons étroitement collaboré, notamment pour l'élaboration des
+              techniques de{" "}
+              <a href="/domaines-dintervention/sevrage-tabagique/" class="text-ink underline underline-offset-2 hover:text-coral">sevrage tabagique</a>{" "}
+              et d'approche des troubles du comportement alimentaire.
+            </p>
+          </div>
+          <p class="mt-6 text-sm text-ink-muted">
+            Avec mes remerciements à {bio.thanks}.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden bg-dark px-5 py-20 text-white md:px-10 md:py-28">
+    <div class="reveal relative mx-auto max-w-[1280px] text-center md:text-left">
+      <p class="eyebrow">{ethique.intro}</p>
+      <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-on-dark md:mx-0">{ethique.article1}</p>
+      <p class="mx-auto mt-6 max-w-2xl text-sm text-on-dark-muted md:mx-0">{ethique.note}</p>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden bg-white px-5 py-20 text-center md:px-10 md:py-28">
+    <div class="reveal relative mx-auto max-w-xl">
+      <h2 class="font-display text-3xl font-bold text-ink md:text-4xl">Prendre rendez-vous avec Nicolas Demagny</h2>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <RoundButton href="/contact/">Prendre rendez-vous</RoundButton>
+        <a href={site.phoneHref} class="text-sm font-semibold text-ink">{site.phone}</a>
+      </div>
+    </div>
+  </section>
+</Layout>

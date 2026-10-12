@@ -1,0 +1,29 @@
+---
+import { site } from "../data/content";
+
+interface Props {
+  url: string;
+}
+const { url } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  name: site.name,
+  description:
+    "Hypnothérapeute à Bordeaux — hypnose ericksonienne, thérapies brèves : sevrage tabagique, gestion des émotions, traumatismes, peurs et phobies.",
+  url,
+  telephone: site.phoneHref.replace("tel:", ""),
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.address.street,
+    postalCode: site.address.postalCode,
+    addressLocality: site.address.city,
+    addressCountry: "FR",
+  },
+  openingHours: "Mo-Fr 09:30-19:30",
+  priceRange: "70€-100€",
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

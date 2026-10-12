@@ -1,0 +1,15 @@
+---
+// Marques d'angle (crop marks) — utilisées autour de la section "À propos"
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+const markCls = "absolute h-6 w-6 border-ink/40";
+---
+
+<div class:list={["pointer-events-none absolute inset-0", className]} aria-hidden="true">
+  <span class={`${markCls} left-0 top-0 border-l border-t`}></span>
+  <span class={`${markCls} right-0 top-0 border-r border-t`}></span>
+  <span class={`${markCls} bottom-0 left-0 border-b border-l`}></span>
+  <span class={`${markCls} bottom-0 right-0 border-b border-r`}></span>
+</div>

@@ -1,0 +1,111 @@
+---
+import { site, navLinks } from "../data/content";
+---
+
+<header class="sticky inset-x-0 top-0 z-50 border-b border-line-light bg-white/95 backdrop-blur">
+  <div class="mx-auto flex max-w-[1280px] items-center justify-between px-5 py-4 md:px-10">
+    <a href="/" class="flex items-center gap-1 leading-none text-ink">
+      <span class="font-display text-xl font-bold tracking-tight">{site.name}</span>
+      <span class="mb-2 text-2xl leading-none text-coral" aria-hidden="true">.</span>
+    </a>
+
+    <nav class="hidden items-center gap-8 lg:flex" aria-label="Navigation principale">
+      {navLinks.map((link) => (
+        <a href={link.href} class="text-sm font-medium text-ink-muted transition-colors hover:text-ink">
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-4 md:gap-6">
+      <a
+        href={site.phoneHref}
+        class="hidden text-sm font-semibold text-ink lg:inline-block"
+        aria-label={`Appeler le ${site.phone}`}
+      >
+        {site.phone}
+      </a>
+      <a href="/contact/" class="btn-pill hidden md:inline-flex">
+        Prendre rendez-vous
+        <span class="btn-pill-icon" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M3 11L11 3M11 3H4.5M11 3V9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </a>
+      <button
+        id="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="btn-circle lg:hidden"
+      >
+        <span class="sr-only">Ouvrir le menu</span>
+        <svg id="menu-icon-open" width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <path d="M1 4.5H17M1 9H17M1 13.5H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <svg id="menu-icon-close" width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true" class="hidden">
+          <path d="M1.5 1.5L16.5 16.5M16.5 1.5L1.5 16.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav
+  id="mobile-menu"
+  class="fixed inset-0 z-40 hidden flex-col justify-center bg-dark px-8 text-white lg:hidden"
+  aria-label="Menu principal"
+>
+  <ul class="flex flex-col gap-6">
+    {navLinks.map((link) => (
+      <li>
+        <a
+          href={link.href}
+          class="font-display text-3xl font-bold tracking-tight text-white"
+        >
+          {link.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+  <a href="/contact/" class="btn-pill mt-10 w-fit">
+    Prendre rendez-vous
+    <span class="btn-pill-icon" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M3 11L11 3M11 3H4.5M11 3V9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </a>
+  <a href={site.phoneHref} class="mt-6 block text-on-dark-muted">
+    {site.phone}
+  </a>
+</nav>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const iconOpen = document.getElementById("menu-icon-open");
+  const iconClose = document.getElementById("menu-icon-close");
+
+  if (toggle && menu) {
+    toggle.addEventListener("click", () => {
+      const isOpen = menu.classList.toggle("flex");
+      menu.classList.toggle("hidden");
+      iconOpen?.classList.toggle("hidden");
+      iconClose?.classList.toggle("hidden");
+      toggle.setAttribute("aria-expanded", String(menu.classList.contains("flex")));
+      document.body.classList.toggle("overflow-hidden");
+    });
+    menu.querySelectorAll("a").forEach((a) =>
+      a.addEventListener("click", () => {
+        menu.classList.add("hidden");
+        menu.classList.remove("flex");
+        iconOpen?.classList.remove("hidden");
+        iconClose?.classList.add("hidden");
+        toggle.setAttribute("aria-expanded", "false");
+        document.body.classList.remove("overflow-hidden");
+      })
+    );
+  }
+</script>

@@ -1,0 +1,21 @@
+---
+import { pourquoiPoints } from "../data/content";
+---
+
+<ul class="relative mt-10 space-y-8 border-l-2 border-line-light pl-8">
+  {pourquoiPoints.map((point, i) => (
+    <li class="relative">
+      <span
+        class:list={[
+          "absolute -left-[2.15rem] top-1 h-3.5 w-3.5 rounded-full border-2",
+          i === 0 ? "border-coral bg-coral" : "border-line-light bg-white",
+        ]}
+        aria-hidden="true"
+      ></span>
+      <h3 class:list={["font-display text-lg font-bold", i === 0 ? "text-ink" : "text-ink-muted"]}>
+        {point.title}
+      </h3>
+      <p class="mt-1.5 max-w-md text-ink-muted">{point.text}</p>
+    </li>
+  ))}
+</ul>

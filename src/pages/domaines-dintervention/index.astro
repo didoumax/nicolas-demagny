@@ -1,0 +1,29 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import DomainesGrid from "../../components/DomainesGrid.astro";
+import RoundButton from "../../components/RoundButton.astro";
+import { domainesIntro } from "../../data/content";
+---
+
+<Layout
+  title="Domaines d'intervention en hypnose à Bordeaux"
+  description="Sevrage tabagique et dépendances, hygiène de vie, émotions, traumatismes, phobies : les 5 domaines d'intervention de Nicolas Demagny, hypnothérapeute à Bordeaux."
+>
+  <section class="relative overflow-hidden bg-dark px-5 py-16 text-on-dark md:px-10 md:py-24">
+    <div class="reveal relative mx-auto max-w-[1280px] text-center md:text-left">
+      <p class="eyebrow">Domaines d'intervention</p>
+      <h1 class="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
+        Domaines d'intervention
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-on-dark-muted md:mx-0">{domainesIntro}</p>
+
+      <div class="mt-16">
+        <DomainesGrid />
+      </div>
+
+      <div class="mt-16 text-center md:text-right">
+        <RoundButton href="/contact/" variant="outline-on-dark">Prendre rendez-vous</RoundButton>
+      </div>
+    </div>
+  </section>
+</Layout>

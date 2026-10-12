@@ -1,0 +1,21 @@
+---
+interface Props {
+  theme?: "light" | "dark";
+  class?: string;
+}
+const { theme = "light", class: className = "" } = Astro.props;
+const lineColor = theme === "dark" ? "border-line-dark" : "border-line-light";
+const textColor = theme === "dark" ? "text-on-dark-muted" : "text-ink-muted";
+const ticks = Array.from({ length: 11 }, (_, i) => String(i + 1).padStart(2, "0"));
+---
+
+<div class:list={["graduated-rule mx-auto max-w-[1280px] px-5 md:px-10", className]} aria-hidden="true">
+  <div class={`flex items-end border-t ${lineColor}`}>
+    {ticks.map((n) => (
+      <div class="flex flex-1 flex-col items-start">
+        <div class={`h-2 w-px ${lineColor.replace("border-", "bg-")}`}></div>
+        <span class={`eyebrow mt-1 hidden text-[10px] sm:block ${textColor}`}>{n}</span>
+      </div>
+    ))}
+  </div>
+</div>
