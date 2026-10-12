@@ -28,3 +28,5 @@ pnpm-debug.log*
 # design references / scratch (not part of the deployed site)
 image references/
 Page 7.png
+
+.env*
