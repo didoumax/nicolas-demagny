@@ -35,7 +35,11 @@ import { site, contact } from "../../data/content";
         </ul>
       </div>
 
-      <form class="space-y-5 rounded-[24px] bg-white p-8" method="POST" action="#">
+      <form class="space-y-5 rounded-[24px] bg-white p-8" method="POST" action="https://api.web3forms.com/submit">
+        <input type="hidden" name="access_key" value="084f004b-9a55-4fe4-bd18-7f04ba3637cd" />
+        <input type="hidden" name="subject" value="Nouvelle demande de rendez-vous — site bordeaux-hypnose.com" />
+        <input type="hidden" name="redirect" value="https://temporary-nimble-chestnut-mhrrl3g.vercel.app/merci/" />
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
         <div class="absolute -left-[9999px]" aria-hidden="true">
           <label for="company">Société</label>
           <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" />
