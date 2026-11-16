@@ -22,7 +22,7 @@ const domainesAccueil = domaines.filter((d) => d.showOnHome);
       <div class="reveal text-center md:text-left">
         <p class="eyebrow">Hypnose ericksonienne — {site.city}</p>
         <h1 class="mt-6 font-display text-[clamp(38px,6vw,64px)] font-bold leading-[1.03] tracking-tight text-ink">
-          Retrouvez le contrôle grâce à l'hypnose
+          Surmontez vos difficultés, évoluez, grâce à l'hypnose
         </h1>
         <p class="mx-auto mt-6 max-w-lg text-lg text-ink-muted md:mx-0">
           {domainesIntro}
@@ -119,13 +119,18 @@ const domainesAccueil = domaines.filter((d) => d.showOnHome);
         <WhyChecklist />
         <a href="/qui-suis-je/" class="underline-link mt-8 block text-center text-ink md:inline-block md:text-left">En savoir plus sur mon approche ↗</a>
       </div>
-      <PhotoPlaceholder
-        label="[VISUEL — CHANGEMENT]"
-        src="/images/hypnose-changement.jpg"
-        alt="Symbole du changement et de la transformation par l'hypnose"
-        rounded
-        class="aspect-square w-full shadow-[0_30px_60px_rgba(28,34,32,0.15)]"
-      />
+      <div>
+        <PhotoPlaceholder
+          label="[VISUEL — CHANGEMENT]"
+          src="/images/hypnose-changement.jpg"
+          alt="Silhouette d'une tête entourée de flèches colorées, symbole du potentiel et du changement intérieur"
+          rounded
+          class="aspect-square w-full shadow-[0_30px_60px_rgba(28,34,32,0.15)]"
+        />
+        <p class="mt-6 text-center font-display text-lg italic text-ink-muted md:text-left">
+          « Vous pouvez beaucoup plus que vous pensez que vous pouvez »
+        </p>
+      </div>
     </div>
   </section>
 
